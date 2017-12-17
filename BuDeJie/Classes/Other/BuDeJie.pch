@@ -1,0 +1,48 @@
+//
+//  BuDeJie.pch
+//  BuDeJie
+//
+//  Created by huangbiyong on 2017/12/7.
+//  Copyright © 2017年 com.chase. All rights reserved.
+//
+
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+
+#import "UIView+Frame.h"
+#import "UIBarButtonItem+Item.h"
+#import "BYConst.h"
+#import "UIImage+Image.h"
+#import "UIImageView+Download.h"
+
+#define BYAFNWriteToPlist(fileName) [responseObject writeToFile:[NSString stringWithFormat:@"/Users/zhangjian/Desktop/ios 大神之路/oc项目/数据/%@.plist",fileName] atomically:YES];
+
+
+// 屏幕尺寸
+#define BYScreenW   [UIScreen mainScreen].bounds.size.width
+#define BYScreenH   [UIScreen mainScreen].bounds.size.height
+
+// 机型
+#define iphone6P  (BYScreenH == 736)
+#define iphone6   (BYScreenH == 667)
+#define iphone5   (BYScreenH == 568)
+#define iphone4   (BYScreenH == 480)
+#define iphoneX   (BYScreenH == 812)
+
+// 颜色
+#define BYColor(r,g,b) [UIColor colorWithRed:(r/255.0) green:(g/255.0) blue:(b/255.0) alpha:1.0]
+
+
+
+#ifdef DEBUG
+
+#define BYLog(...)  NSLog(__VA_ARGS__)
+
+#else
+
+#define BYLog(...)
+
+#endif
