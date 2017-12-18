@@ -15,6 +15,8 @@
 		147B08D81FDFC63A004A9496 /* BYConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 147B08D71FDFC63A004A9496 /* BYConst.m */; };
 		1485DBE71FDE31AF0095BA55 /* BYFileTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1485DBE61FDE31AF0095BA55 /* BYFileTool.m */; };
 		1485DBEA1FDF68E10095BA55 /* BYTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1485DBE91FDF68E10095BA55 /* BYTitleButton.m */; };
+		14CDE8771FE768EE00FB6984 /* BYSeeBigPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14CDE8751FE768EE00FB6984 /* BYSeeBigPictureViewController.m */; };
+		14CDE8781FE768EE00FB6984 /* BYSeeBigPictureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14CDE8761FE768EE00FB6984 /* BYSeeBigPictureViewController.xib */; };
 		14CFE0A21FE250B900CFFE83 /* BYTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 14CFE0A11FE250B900CFFE83 /* BYTopic.m */; };
 		14CFE0A51FE278B500CFFE83 /* BYTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14CFE0A41FE278B500CFFE83 /* BYTopicCell.m */; };
 		14CFE0B31FE35E7B00CFFE83 /* BYTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14CFE0B21FE35E7B00CFFE83 /* BYTopicCell.xib */; };
@@ -117,6 +119,9 @@
 		1485DBE61FDE31AF0095BA55 /* BYFileTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BYFileTool.m; sourceTree = "<group>"; };
 		1485DBE81FDF68E10095BA55 /* BYTitleButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BYTitleButton.h; sourceTree = "<group>"; };
 		1485DBE91FDF68E10095BA55 /* BYTitleButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BYTitleButton.m; sourceTree = "<group>"; };
+		14CDE8741FE768EE00FB6984 /* BYSeeBigPictureViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BYSeeBigPictureViewController.h; sourceTree = "<group>"; };
+		14CDE8751FE768EE00FB6984 /* BYSeeBigPictureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BYSeeBigPictureViewController.m; sourceTree = "<group>"; };
+		14CDE8761FE768EE00FB6984 /* BYSeeBigPictureViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BYSeeBigPictureViewController.xib; sourceTree = "<group>"; };
 		14CFE0A01FE250B900CFFE83 /* BYTopic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BYTopic.h; sourceTree = "<group>"; };
 		14CFE0A11FE250B900CFFE83 /* BYTopic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BYTopic.m; sourceTree = "<group>"; };
 		14CFE0A31FE278B500CFFE83 /* BYTopicCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BYTopicCell.h; sourceTree = "<group>"; };
@@ -463,6 +468,9 @@
 				147B08D11FDFAF76004A9496 /* BYPictureViewController.m */,
 				147B08D31FDFAF8E004A9496 /* BYWordViewController.h */,
 				147B08D41FDFAF8E004A9496 /* BYWordViewController.m */,
+				14CDE8741FE768EE00FB6984 /* BYSeeBigPictureViewController.h */,
+				14CDE8751FE768EE00FB6984 /* BYSeeBigPictureViewController.m */,
+				14CDE8761FE768EE00FB6984 /* BYSeeBigPictureViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -901,6 +909,7 @@
 				63D8834E1FE52430006DF83C /* BYTopicVideoView.xib in Resources */,
 				14D07BA51FDA691F00BC40AA /* BYLoginRegisterViewController.xib in Resources */,
 				14D07BAA1FDA799F00BC40AA /* BYLoginRegisterView.xib in Resources */,
+				14CDE8781FE768EE00FB6984 /* BYSeeBigPictureViewController.xib in Resources */,
 				14D07B7E1FD92FE300BC40AA /* BYAdViewController.xib in Resources */,
 				14D07B8A1FD933D700BC40AA /* LaunchImage-700@2x.png in Resources */,
 				14ED39221FD7A0C20020E8B0 /* Main.storyboard in Resources */,
@@ -1085,6 +1094,7 @@
 				147B08CC1FDFAF4C004A9496 /* BYVideoViewController.m in Sources */,
 				14D07BAD1FDA97AA00BC40AA /* BYFastLoginView.m in Sources */,
 				63D883561FE52789006DF83C /* BYTopicPictureView.m in Sources */,
+				14CDE8771FE768EE00FB6984 /* BYSeeBigPictureViewController.m in Sources */,
 				14ED39761FD7C2FA0020E8B0 /* BYEssenceViewController.m in Sources */,
 				1485DBEA1FDF68E10095BA55 /* BYTitleButton.m in Sources */,
 				14D07B931FD9491800BC40AA /* BYADItem.m in Sources */,

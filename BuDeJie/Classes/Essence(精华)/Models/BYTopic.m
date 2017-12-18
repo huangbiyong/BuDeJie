@@ -37,7 +37,6 @@
         _cellHeight += middleH + BYMargin;
     }
     
-
     
     // 最热评论
     if (self.top_cmt.count) { //有最热评论

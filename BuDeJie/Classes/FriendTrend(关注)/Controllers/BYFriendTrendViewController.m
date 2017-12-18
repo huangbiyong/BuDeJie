@@ -24,8 +24,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    _testField.placeholderColor = [UIColor greenColor];
-    _testField.placeholder = @"123";
     
     [self setupNavBar];
 }

@@ -10,6 +10,7 @@
 #import "BYTopic.h"
 #import <UIImageView+WebCache.h>
 #import <AFNetworking.h>
+#import "BYSeeBigPictureViewController.h"
 
 @interface BYTopicVideoView()
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
@@ -26,8 +27,19 @@
     [super awakeFromNib];
     
     self.autoresizingMask = UIViewAutoresizingNone;
+    
+    self.imgView.userInteractionEnabled = YES;
+    [self.imgView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(seeBigPicture)]];
 }
 
+/*
+ 查看大图
+ */
+- (void)seeBigPicture {
+    BYSeeBigPictureViewController *seeBigVc = [[BYSeeBigPictureViewController alloc] init];
+    seeBigVc.topic = _topic;
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:seeBigVc animated:YES completion:nil];
+}
 
 - (void)setTopic:(BYTopic *)topic
 {

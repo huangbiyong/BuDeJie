@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -62,10 +62,9 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="imgView" destination="gZf-jD-9Jr" id="UVO-LK-zta"/>
-                <outlet property="placeholderView" destination="gZf-jD-9Jr" id="hcF-dw-5cj"/>
+                <outlet property="placeholderView" destination="40Z-mG-j6c" id="Niq-RV-nds"/>
                 <outlet property="playcountLabel" destination="lTs-DE-VF0" id="lW5-pj-CzY"/>
                 <outlet property="videotimeLabel" destination="fQJ-BJ-qOP" id="9Hg-MB-U01"/>
-                <outlet property="voicetimeLabel" destination="fQJ-BJ-qOP" id="fJA-ym-fbu"/>
             </connections>
             <point key="canvasLocation" x="28" y="-146.5"/>
         </view>

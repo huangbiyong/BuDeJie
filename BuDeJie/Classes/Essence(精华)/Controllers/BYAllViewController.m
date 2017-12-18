@@ -137,7 +137,6 @@ static NSString * const BYTopicCellId = @"BYTopicCellId";
     self.footerLabel = footerLabel;
     
     self.tableView.tableFooterView = footer;
-    
 }
 
 #pragma mark - 监听
@@ -182,12 +181,11 @@ static NSString * const BYTopicCellId = @"BYTopicCellId";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-
     return self.topics[indexPath.row].cellHeight;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-   
+
     BYTopicCell *cell = [tableView dequeueReusableCellWithIdentifier:BYTopicCellId];
     cell.topic = self.topics[indexPath.row];;
     return cell;
@@ -220,7 +218,11 @@ static NSString * const BYTopicCellId = @"BYTopicCellId";
     
     // 处理footer
     [self dealFooter];
+    
+    // 清除缓存
+    [[SDImageCache sharedImageCache] clearMemory];
 }
+
 
 #pragma mark - 处理header
 - (void)dealHeader {
@@ -333,7 +335,7 @@ static NSString * const BYTopicCellId = @"BYTopicCellId";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     parameters[@"a"] = @"list";
     parameters[@"c"] = @"data";
-    parameters[@"type"] = @"41";
+    parameters[@"type"] = @"1";
     
     [self.manager GET:BYCommonUrl parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
@@ -372,7 +374,7 @@ static NSString * const BYTopicCellId = @"BYTopicCellId";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     parameters[@"a"] = @"list";
     parameters[@"c"] = @"data";
-    parameters[@"type"] = @"41";
+    parameters[@"type"] = @"1";
     parameters[@"maxtime"] = self.maxtime;
     
     [self.manager GET:BYCommonUrl parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

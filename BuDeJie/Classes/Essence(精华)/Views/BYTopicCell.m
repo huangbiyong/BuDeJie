@@ -73,6 +73,10 @@
 - (void)setTopic:(BYTopic *)topic {
     _topic = topic;
     
+    //NSLog(@"cellHeight = %lf",topic.cellHeight);
+    
+    CGFloat cellHeight = topic.cellHeight;
+    
     UIImage *placeholder = [UIImage by_circleImageWithNamed:@"defaultUserIcon"];
     
     [self.profileImageView sd_setImageWithURL:[NSURL URLWithString:topic.profile_image] placeholderImage:placeholder completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {

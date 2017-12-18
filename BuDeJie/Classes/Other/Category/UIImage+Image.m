@@ -46,7 +46,7 @@
     return image;
 }
 
-+ (instancetype)xmg_circleImageNamed:(NSString *)name
++ (instancetype)by_circleImageNamed:(NSString *)name
 {
     return [[self imageNamed:name] by_circleImage];
 }

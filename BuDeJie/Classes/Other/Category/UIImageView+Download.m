@@ -14,11 +14,6 @@
 
 - (void)by_setOriginImage:(NSString *)originImageURL thumbnailImage:(NSString *)thumbnailImageURL placeholder:(UIImage *)placeholder completed:(SDWebImageCompletionBlock)completedBlock
 {
-    //    [[SDWebImageManager sharedManager]setCacheKeyFilter:^(NSURL *url) {
-    //        // 所有缓存图片的key后面都有个-xmg后缀
-    //        return [NSString stringWithFormat:@"%@-xmg", url.absoluteString];
-    //    }];
-    
     // 根据网络状态来加载图片
     AFNetworkReachabilityManager *mgr = [AFNetworkReachabilityManager sharedManager];
     // 获得原图（SDWebImage的图片缓存是用图片的url字符串作为key）
