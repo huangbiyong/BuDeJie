@@ -1,37 +1,20 @@
 //
-//  BYAllViewController.m
+//  BYTopicViewController.m
 //  BuDeJie
 //
-//  Created by huangbiyong on 2017/12/12.
+//  Created by huangbiyong on 2017/12/19.
 //  Copyright © 2017年 com.chase. All rights reserved.
 //
 
-#import "BYAllViewController.h"
+#import "BYTopicViewController.h"
 #import <AFNetworking/AFNetworking.h>
 #import <MJExtension/MJExtension.h>
 #import <SVProgressHUD/SVProgressHUD.h>
-#import "BYTopic.h"
+
 
 #import "BYTopicCell.h"
 
-
-// 枚举写法一
-/*
-typedef enum {
-    BYTopicTypeAll = 1,      // 所有
-    BYTopicTypePicture = 10, // 图片
-    BYTopicTypeWord = 29,    // 段子
-    BYTopicTypeVoice = 31,   // 声音
-    BYTopicTypeVideo = 41    // 视频
-} BYTopicType;
-*/
-
-
-
-
-
-
-@interface BYAllViewController ()
+@interface BYTopicViewController ()
 
 /** 帖子数组 */
 @property (nonatomic, strong) NSMutableArray<BYTopic*> *topics;
@@ -55,9 +38,10 @@ typedef enum {
 /** 上拉刷新控件时候正在刷新 */
 @property (nonatomic, assign, getter=isFooterRefreshing) BOOL footerRefreshing;
 
+
 @end
 
-@implementation BYAllViewController
+@implementation BYTopicViewController
 
 static NSString * const BYTopicCellId = @"BYTopicCellId";
 
@@ -84,15 +68,15 @@ static NSString * const BYTopicCellId = @"BYTopicCellId";
     self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     //self.tableView.rowHeight = 200;
-
+    
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([BYTopicCell class]) bundle:nil] forCellReuseIdentifier:BYTopicCellId];
-
+    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabBarButtonDidRepeatClick) name:BYTabBarButtonDidRepeatClickNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(titleButtonDidRepeatClick) name:BYTitleButtonDidRepeatClickNotification object:nil];
-     
+    
     [self setupRefresh];
-
+    
     // 一进入就自动刷新
     [self headerBeginRefreshing];
     
@@ -141,7 +125,7 @@ static NSString * const BYTopicCellId = @"BYTopicCellId";
 
 #pragma mark - 监听
 /*
-    tabBarButton 重复点击监听
+ tabBarButton 重复点击监听
  */
 - (void)tabBarButtonDidRepeatClick {
     
@@ -175,7 +159,7 @@ static NSString * const BYTopicCellId = @"BYTopicCellId";
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
+    
     self.footer.hidden = (self.topics.count == 0);
     return self.topics.count;
 }
@@ -185,7 +169,7 @@ static NSString * const BYTopicCellId = @"BYTopicCellId";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    
     BYTopicCell *cell = [tableView dequeueReusableCellWithIdentifier:BYTopicCellId];
     cell.topic = self.topics[indexPath.row];;
     return cell;
@@ -198,7 +182,7 @@ static NSString * const BYTopicCellId = @"BYTopicCellId";
 
 #pragma mark - UIScrollView代理方法
 /*
-    手松开的瞬间
+ 手松开的瞬间
  */
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     
@@ -325,19 +309,23 @@ static NSString * const BYTopicCellId = @"BYTopicCellId";
 
 #pragma mark - 加载数据
 /*
-    下拉刷新
+ 下拉刷新
  */
 - (void)loadNewTopics {
     
     // 取消之前的请求
     [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-
+    
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     parameters[@"a"] = @"list";
     parameters[@"c"] = @"data";
-    parameters[@"type"] = @"1";
+    parameters[@"type"] = @(self.type);
     
     [self.manager GET:BYCommonUrl parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        //NSLog(@"%@",responseObject);
+        
+        //BYAFNWriteToPlist(@"all")
         
         // 获取最后一页的 时间
         self.maxtime = responseObject[@"info"][@"maxtime"];
@@ -355,8 +343,10 @@ static NSString * const BYTopicCellId = @"BYTopicCellId";
         // 结束刷新
         [self headerEndRefreshing];
         
-        // 任务被取消 （我们主动取消的 -99）
-        if (error.code != -999) {
+        NSLog(@"%@",error);
+        
+        // 任务被取消 （我们主动取消的 -999）
+        if (error.code != NSURLErrorCancelled) {
             [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试!"];
         }
         
@@ -364,17 +354,17 @@ static NSString * const BYTopicCellId = @"BYTopicCellId";
 }
 
 /*
-    上拉数据, 加载更多数据
+ 上拉数据, 加载更多数据
  */
 - (void)loadMoreTopics {
     
     // 取消之前的请求
     [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-
+    
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     parameters[@"a"] = @"list";
     parameters[@"c"] = @"data";
-    parameters[@"type"] = @"1";
+    parameters[@"type"] = @(self.type);
     parameters[@"maxtime"] = self.maxtime;
     
     [self.manager GET:BYCommonUrl parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -395,13 +385,11 @@ static NSString * const BYTopicCellId = @"BYTopicCellId";
         // 结束刷新
         [self footerEndRefreshing];
         
-        // 任务被取消 （我们主动取消的 -99）
-        if (error.code != -999) {
+        // 任务被取消 （我们主动取消的 -999）
+        if (error.code != NSURLErrorCancelled) {
             [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试!"];
         }
     }];
 }
-
-
 
 @end

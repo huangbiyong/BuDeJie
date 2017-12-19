@@ -6,8 +6,8 @@
 //  Copyright © 2017年 com.chase. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BYTopicViewController.h"
 
-@interface BYVideoViewController : UITableViewController
+@interface BYVideoViewController : BYTopicViewController
 
 @end
